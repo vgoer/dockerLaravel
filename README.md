@@ -9,3 +9,22 @@
 > @authoer  goer
 >
 > @version 2023/03/16
+
+
+
+### 步骤
+> 以前的博客上有步骤 HelloDocker 这个项目
+
+```shell
+
+1. 安装docker 
+
+2. 安装docker-compose 
+
+
+3. git clone https://github.com/vgoer/dockerLaravel.git
+
+
+4. docker-compose up -d
+
+```

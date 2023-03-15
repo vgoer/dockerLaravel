@@ -1,0 +1,35 @@
+version: '3'
+services:
+  nginx:
+    container_name: nginx-laravel
+    image: nginx:latest
+    ports:
+      - 8010:80
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf:delegated
+      - ./server:/var/www/:delegated
+    depends_on:
+      - php
+
+  php:
+    container_name: php-laravel
+    build: ./php
+    volumes:
+      - ./server:/var/www/:delegated
+
+  db:
+    container_name: mysql-laravel
+    build: ./mysql
+    privileged: true
+    volumes:
+      - ./mysql/dbdata/:/var/lib/mysql 
+    ports:
+      - 8011:3306
+
+  phpmyadmin:
+    container_name: myadmin-laravel
+    image: phpmyadmin/phpmyadmin:latest
+    ports:
+      - 8013:80
+    depends_on:
+      - db

@@ -24,7 +24,7 @@ services:
     volumes:
       - ./mysql/dbdata/:/var/lib/mysql 
     ports:
-      - 8011:3306
+      - 3306:3306
 
   phpmyadmin:
     container_name: myadmin-laravel

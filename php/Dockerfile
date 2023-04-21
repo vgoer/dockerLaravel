@@ -6,6 +6,8 @@ COPY php.ini /usr/local/etc/php/
 # 更新系统
 RUN apt-get update
 
+
+
 # 修改源
 RUN apt-get install sed
 RUN sed -i 's/deb.debian.org/mirrors.ustc.edu.cn/g' /etc/apt/sources.list
@@ -17,7 +19,7 @@ RUN cd /usr/bin && curl -s http://getcomposer.org/installer | php && ln -s /usr/
 # 安装 git zip 等工具
 RUN apt-get update \
     && apt-get install -y zlib1g-dev  git libzip-dev mariadb-client \
-    && docker-php-ext-install zip pdo_mysql
+    && docker-php-ext-install zip pdo_mysql 
 
 # 升级系统 和 安装node
 RUN curl -sL https://deb.nodesource.com/setup_12.x | bash - \ 
